@@ -1,0 +1,26 @@
+{
+  "name": "week-6-bhkm-",
+  "version": "1.0.0",
+  "description": "Database project",
+  "main": "index.js",
+  "scripts": {
+    "go": "nodemon src/server/server.js",
+    "start": "node src/server/server.js",
+    "test": "tape tests/db_tests.js | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fac-17/Week-6-BHKM-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fac-17/Week-6-BHKM-/issues"
+  },
+  "homepage": "https://github.com/fac-17/Week-6-BHKM-#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.1",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.11.0"
+  }
+}
