@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 function homeHandler(req, res, endpoint) {
-  const filePath = path.join(__dirname, "..", "public", "index.html");
+  const filePath = path.join(__dirname, "..", "..", "public", "index.html");
   fs.readFile(filePath, (err, file) => {
     if (err) {
       res.writeHead(500, { "content-type": "text/html" });
@@ -20,7 +20,7 @@ function publicHandler(req, res, endpoint) {
     css: "text/css",
     js: "text/js",
     ico: "image/x-icon",
-    ong: "image/png"
+    png: "image/png"
   };
   const filePath = path.join(__dirname, "..", endpoint);
   fs.readFile(filePath, (err, file) => {
@@ -28,7 +28,7 @@ function publicHandler(req, res, endpoint) {
       res.writeHead(404, { "Content-Type": "text/html" });
       res.end("<h1>Not found!</h1>");
     } else {
-      res.writeHead(200, { "Content-Type": extensions[fileType] });
+      res.writeHead(200, { "Content-Type": extensionType[extension] });
       res.end(file);
     }
   });

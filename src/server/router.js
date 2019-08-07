@@ -8,7 +8,7 @@ const router = (req, res) => {
     publicHandler(req, res, endpoint);
   } else {
     res.writeHead(404, { "Content-Type": "text/html" });
-    res.end("<h1>File not found ¯_(ツ)_¯</h1>");
+    res.end("<h1>File not found </h1>");
   }
 };
 
