@@ -9,12 +9,14 @@
     <link rel="stylesheet" href="/public/style.css" />
     <link rel="stylesheet" href="/public/normalise.css" />
   </head>
+
   <body>
     <h1>Bugbears!</h1>
+
     <section class="bugbear-form-section">
       <form
         class="bugbear-form"
-        action="post-bugbear"
+        action="/post-bugbear"
         method="POST"
         aria-label="fill in your bugbears"
       >
@@ -38,9 +40,12 @@
         </select>
 
         <input type="text" name="description" value="" required />
+        <button type="submit" name="button">+ Add Bugbear</button>
       </form>
     </section>
+
     <section class="bugbear-table-section"></section>
+
     <script src="/public/script.js" async defer></script>
   </body>
 </html>

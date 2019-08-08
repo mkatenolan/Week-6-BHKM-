@@ -1,5 +1,8 @@
 const fs = require("fs");
 const path = require("path");
+const querystring = require("querystring");
+const qs = require("qs");
+const postBugbears = require("../queries/postData");
 
 function homeHandler(req, res, endpoint) {
   const filePath = path.join(__dirname, "../..", "public", "index.html");
@@ -36,4 +39,25 @@ function publicHandler(req, res, endpoint) {
   });
 }
 
-module.exports = { homeHandler, publicHandler };
+const postHandler = (req, res) => {
+  console.log("gets into post handler");
+  let allData = "";
+  req.on("data", chunk => {
+    allData += chunk;
+  });
+  req.on("end", () => {
+    console.log("gets into req.onend");
+    console.log(qs.parse(allData));
+    const { category, name, rage_level, description } = qs.parse(allData);
+    postBugbears(category, name, rage_level, description, err => {
+      if (err) {
+        res.writeHead(404, { "Content-Type": "text/html" });
+        res.end("<h1>Not found!</h1>");
+      }
+      res.writeHead(302, { Location: "/" });
+      res.end();
+    });
+  });
+};
+
+module.exports = { homeHandler, publicHandler, postHandler };
