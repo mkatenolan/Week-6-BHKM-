@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 function homeHandler(req, res, endpoint) {
-  const filePath = path.join(__dirname, "..", "..", "public", "index.html");
+  const filePath = path.join(__dirname, "../..", "public", "index.html");
   fs.readFile(filePath, (err, file) => {
     if (err) {
       res.writeHead(500, { "content-type": "text/html" });
@@ -22,7 +22,7 @@ function publicHandler(req, res, endpoint) {
     ico: "image/x-icon",
     png: "image/png"
   };
-  const filePath = path.join(__dirname, "..", endpoint);
+  const filePath = path.join(__dirname, "../..", endpoint);
   fs.readFile(filePath, (err, file) => {
     if (err) {
       res.writeHead(404, { "Content-Type": "text/html" });
