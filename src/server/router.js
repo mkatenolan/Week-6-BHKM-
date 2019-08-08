@@ -1,4 +1,9 @@
-const { homeHandler, publicHandler, getDataHandler } = require("./handler");
+const {
+  homeHandler,
+  publicHandler,
+  getDataHandler,
+  postHandler
+} = require("./handler");
 
 const router = (req, res) => {
   const endpoint = req.url;
