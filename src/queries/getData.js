@@ -7,4 +7,9 @@ const getBugbears = cb => {
   });
 };
 
+// getBugbears((err, res)=> {
+//   console.log(res);
+// });
+
+
 module.exports = { getBugbears };
