@@ -10,7 +10,37 @@
     <link rel="stylesheet" href="/public/normalise.css" />
   </head>
   <body>
-    <p>hello world<p>
+    <h1>Bugbears</h1>
+    <section class="bugbear-form-section">
+      <form
+        class="bugbear-form"
+        action="post-bugbear"
+        method="POST"
+        aria-label="fill in your bugbears"
+      >
+        <select name="category" required>
+          <option value="politics">Politics</option>
+          <option value="humans">Humans</option>
+          <option value="noise">Noise</option>
+          <option value="smell">Smell</option>
+          <option value="sound">Sound</option>
+          <option value="other">Other</option>
+        </select>
+
+        <input type="text" name="name" value="" required />
+
+        <select name="rage_level" required>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+
+        <input type="text" name="description" value="" required />
+      </form>
+    </section>
+    <section class="bugbear-table-section"></section>
     <script src="/public/script.js" async defer></script>
   </body>
 </html>
