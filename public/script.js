@@ -12,23 +12,34 @@ window.onload = () => {
   let createDom = response => {
     response.forEach(function(obj) {
       let listitem = document.createElement("li");
-      //   bugBearList.setAttribute("style", "display:flex;");
-      let paragraph = document.createElement("p");
-      paragraph.textContent = obj.category;
-      listitem.appendChild(paragraph);
+
+      // add category p
+
+      let category = document.createElement("p");
+      category.textContent = obj.category;
+
+      // add name p
+
+      let name = document.createElement("p");
+      name.textContent = obj.name;
+
+      // add rage_level p
+
+      let rageLevel = document.createElement("p");
+      rageLevel.textContent = obj.rage_level;
+
+      // add description p
+
+      let description = document.createElement("p");
+      description.textContent = obj.description;
+
+      // append children
+      listitem.appendChild(category);
+      listitem.appendChild(name);
+      listitem.appendChild(rageLevel);
+      listitem.appendChild(description);
 
       bugBearList.appendChild(listitem);
-      //   console.log("responsechildnode:", response.childNodes);
-      //   console.log("obj:", PObj);
-      //   console.log("objchildnode:", obj.childNodes);
-      //   let pObj = {};
-      //   pObj = obj;
-      //   pObj.forEach(function(key) {
-      //     if (!key.startsWith(id)) {
-      //       let paragraph = document.createElement("p");
-      //       listitem.appendChild(paragraph);
-      //     }
-      //   });
     });
   };
 
