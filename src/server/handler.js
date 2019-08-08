@@ -22,7 +22,9 @@ function publicHandler(req, res, endpoint) {
     ico: "image/x-icon",
     png: "image/png"
   };
+
   const filePath = path.join(__dirname, "../..", endpoint);
+
   fs.readFile(filePath, (err, file) => {
     if (err) {
       res.writeHead(404, { "Content-Type": "text/html" });

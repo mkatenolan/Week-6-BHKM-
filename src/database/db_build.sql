@@ -7,7 +7,7 @@ CREATE TABLE bugbears (
     category VARCHAR(100),
     name VARCHAR(100),
     rage_level INTEGER,
-    description VARCHAR(280),
+    description VARCHAR(280)
 );
 
 INSERT INTO bugbears (category, name, rage_level, description)
