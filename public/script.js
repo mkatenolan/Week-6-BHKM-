@@ -1,3 +1,4 @@
+
 let body = document.querySelector('body');
 
 window.onload = () => {
@@ -15,3 +16,5 @@ window.onload = () => {
   xhr.send();
 
 };
+
+const bugBearTable
