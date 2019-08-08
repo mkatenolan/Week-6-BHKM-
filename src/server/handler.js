@@ -51,8 +51,9 @@ const postHandler = (req, res) => {
     const { category, name, rage_level, description } = qs.parse(allData);
     postBugbears(category, name, rage_level, description, err => {
       if (err) {
-        res.writeHead(404, { "Content-Type": "text/html" });
+        res.writeHead(200, { "Content-Type": "text/html" });
         res.end("<h1>Not found!</h1>");
+        console.log("this is the error:", err);
       }
       res.writeHead(302, { Location: "/" });
       res.end();
