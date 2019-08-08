@@ -6,6 +6,8 @@ const router = (req, res) => {
     homeHandler(req, res);
   } else if (endpoint.includes("public")) {
     publicHandler(req, res, endpoint);
+  } else if(endpoint === '/get-info') {
+    getDataHandler(req, res, endpoint);
   } else {
     res.writeHead(404, { "Content-Type": "text/html" });
     res.end("<h1>File not found </h1>");
