@@ -6,7 +6,7 @@
   "scripts": {
     "go": "nodemon src/server/server.js",
     "start": "node src/server/server.js",
-    "test": "tape tests/db_tests.js | tap-spec"
+    "test": "tape src/tests/db_tests.js | tap-spec"
   },
   "repository": {
     "type": "git",

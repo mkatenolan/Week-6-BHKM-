@@ -6,3 +6,5 @@ const getBugbears = cb => {
     cb (null, res.rows);
   });
 };
+
+module.exports = { getBugbears };
