@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const getData = require('../queries/getData');
 
 function homeHandler(req, res, endpoint) {
   const filePath = path.join(__dirname, "../..", "public", "index.html");
@@ -36,4 +37,11 @@ function publicHandler(req, res, endpoint) {
   });
 }
 
-module.exports = { homeHandler, publicHandler };
+function getDataHandler(req, res, endpoint){
+  getData.getBugbears((err, result) => {
+    res.writeHead(200, {"Content-Type": 'application:json'});
+    res.end(JSON.stringify(result));
+  });
+}
+
+module.exports = { homeHandler, publicHandler, getDataHandler};

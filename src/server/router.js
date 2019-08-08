@@ -1,7 +1,8 @@
-const { homeHandler, publicHandler } = require("./handler");
+const { homeHandler, publicHandler, getDataHandler } = require("./handler");
 
 const router = (req, res) => {
   const endpoint = req.url;
+  console.log(endpoint);
   if (endpoint === "/") {
     homeHandler(req, res);
   } else if (endpoint.includes("public")) {
