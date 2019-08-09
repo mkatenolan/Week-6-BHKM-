@@ -1,4 +1,9 @@
-const { homeHandler, publicHandler, getDataHandler } = require("./handler");
+const {
+  homeHandler,
+  publicHandler,
+  getDataHandler,
+  postHandler
+} = require("./handler");
 
 const router = (req, res) => {
   const endpoint = req.url;
@@ -7,7 +12,9 @@ const router = (req, res) => {
     homeHandler(req, res);
   } else if (endpoint.includes("public")) {
     publicHandler(req, res, endpoint);
-  } else if(endpoint === '/get-info') {
+  } else if (endpoint === "/post-bugbear") {
+    postHandler(req, res);
+  } else if (endpoint === "/get-info") {
     getDataHandler(req, res, endpoint);
   } else {
     res.writeHead(404, { "Content-Type": "text/html" });
