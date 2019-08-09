@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
+    <title>Bugbears</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/public/style.css" />
@@ -29,7 +29,9 @@
           <option value="other">Other</option>
         </select>
 
-        <input type="text" name="name" value="" required />
+<label for=name>
+        <input id="name" type="text" name="name" value="" required />
+</label>
 
         <select name="rage_level" required>
           <option value="1">1</option>
@@ -39,7 +41,10 @@
           <option value="5">5</option>
         </select>
 
-        <input type="text" name="description" value="" required />
+<label for=description>
+        <input id="description" type="text" name="description" value="" required />
+</label>
+
         <button type="submit" name="button">+ Add Bugbear</button>
       </form>
     </section>
