@@ -11,16 +11,18 @@
   </head>
 
   <body>
-    <h1>Bugbears!</h1>
+    <h1>Bugbears</h1>
 
     <section class="bugbear-form-section">
+      <h1 class="section-header">Let off some steam!</h1>
       <form
         class="bugbear-form"
         action="/post-bugbear"
         method="POST"
         aria-label="fill in your bugbears"
       >
-        <select name="category" required>
+  <label for=category>Category</label>
+        <select name="category" id="category" required>
           <option value="politics">Politics</option>
           <option value="humans">Humans</option>
           <option value="noise">Noise</option>
@@ -29,11 +31,11 @@
           <option value="other">Other</option>
         </select>
 
-<label for=name>
-        <input id="name" type="text" name="name" value="" required />
-</label>
+<label for=name>Name</label>
+        <input placeholder="Enter your name" id="name" type="text" name="name" value="" required />
 
-        <select name="rage_level" required>
+<label for=rage_level>Rage Level</label>
+        <select name="rage_level" id="rage_level" required>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -41,15 +43,16 @@
           <option value="5">5</option>
         </select>
 
-<label for=description>
-        <input id="description" type="text" name="description" value="" required />
-</label>
+<label for=description>Description</label>
+        <input placeholder="Enter your rant here" id="description" type="text" name="description" value="" required />
+
 
         <button type="submit" name="button">+ Add Bugbear</button>
       </form>
     </section>
 
     <section class="bugbear-table-section">
+      <h1 class="section-header">See what bugs others</h1>
       <ul class="list"></ul>
     </section>
 
