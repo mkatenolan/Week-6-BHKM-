@@ -8,21 +8,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/public/style.css" />
     <link rel="stylesheet" href="/public/normalise.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Miriam+Libre|Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
-    <h1>Bugbears</h1>
-
+    <section class="title-section">
+      <img
+        class="bear-pic"
+        src="/public/Bugbear.png"
+        alt="Angry bear picture"
+      />
+      <h1>Bugbears!</h1>
+    </section>
+    <h1 class="section-header">Let off some steam!</h1>
     <section class="bugbear-form-section">
-      <h1 class="section-header">Let off some steam!</h1>
       <form
         class="bugbear-form"
         action="/post-bugbear"
         method="POST"
         aria-label="fill in your bugbears"
       >
-  <label for=category>Category</label>
-        <select name="category" id="category" required>
+        <label for="category">Category</label>
+        <select class="category" name="category" id="category" required>
           <option value="politics">Politics</option>
           <option value="humans">Humans</option>
           <option value="noise">Noise</option>
@@ -31,21 +41,36 @@
           <option value="other">Other</option>
         </select>
 
-<label for=name>Name</label>
-        <input placeholder="Enter your name" id="name" type="text" name="name" value="" required />
+        <label for="name">Name</label>
+        <input
+          class="name"
+          placeholder="Enter your name"
+          id="name"
+          type="text"
+          name="name"
+          value=""
+          required
+        />
 
-<label for=rage_level>Rage Level</label>
-        <select name="rage_level" id="rage_level" required>
+        <label for="rage_level">Rage Level</label>
+        <select class="rage" name="rage_level" id="rage_level" required>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
         </select>
-
-<label for=description>Description</label>
-        <input placeholder="Enter your rant here" id="description" type="text" name="description" value="" required />
-
+        <br />
+        <label for="description">Description</label>
+        <input
+          class="description"
+          placeholder="Enter your rant here"
+          id="description"
+          type="text"
+          name="description"
+          value=""
+          required
+        />
 
         <button type="submit" name="button">+ Add Bugbear</button>
       </form>

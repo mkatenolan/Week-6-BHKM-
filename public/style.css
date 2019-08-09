@@ -1,0 +1,60 @@
+* {
+  font-family: "Playfair Display", serif;
+  font-family: "Miriam Libre", sans-serif;
+  text-align: center;
+  /* vertical-align: middle; */
+  background-color: white;
+  color: black;
+}
+
+h1 {
+  font-size: 100px;
+}
+
+body {
+  min-width: 600px;
+}
+
+.bear-pic {
+  width: 40vw;
+}
+
+.bugbear-form-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.category {
+}
+
+.name {
+}
+
+.rage {
+}
+
+.description {
+  width: 50%;
+  height: 40%;
+  padding-top: 20px;
+  margin: 30px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+p {
+  text-align: left;
+}
+
+button {
+}
