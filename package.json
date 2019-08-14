@@ -20,7 +20,6 @@
   "homepage": "https://github.com/fac-17/Week-6-BHKM-#readme",
   "devDependencies": {
     "nodemon": "^1.19.1",
-    "qs": "^6.7.0",
     "tap-spec": "^5.0.0",
     "tape": "^4.11.0"
   },
