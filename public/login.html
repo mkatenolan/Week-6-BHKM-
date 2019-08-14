@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, intial-scale=1" />
+    <title>Bugbears Login</title>
+    <link rel="stylesheet" href="/public/login.css" />
+    <link rel="stylesheet" href="/public/normalise.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Miriam+Libre|Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <h1>Welcome to Bugbears</h1>
+    <section class="login-register">
+      <form
+        class="register-form"
+        action="/register"
+        method="POST"
+        aria-label="Enter a username and password to register"
+      >
+        <label for="registerUserName">Username</label>
+        <input
+          id="registerUserName"
+          class="register-username"
+          type="text"
+          required
+          placeholder="Enter your username"
+          oninvalid="this.setCustomValidity('Enter your username')"
+          oninput="this.setCustomValidity('')"
+        />
+        <label for="registerPassWord">Password</label>
+        <input
+          id="registerPassWord"
+          class="register-password"
+          type="text"
+          required
+          placeholder="Enter a password"
+        />
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          id="confirmPassword"
+          class="confirm-password"
+          type="text"
+          required
+          placeholder="Re-enter your password"
+        />
+        <button type="submit">Register</button>
+      </form>
+
+      <form
+        class="login-form"
+        action="/login"
+        method="POST"
+        aria-label="Enter your username and password to login"
+      >
+        <label for="loginUserName">Username</label>
+        <input
+          id="loginUserName"
+          class="login-username"
+          type="text"
+          required
+          placeholder="Enter your username"
+          oninvalid="this.setCustomValidity('Enter your username')"
+          oninput="this.setCustomValidity('')"
+        />
+        <label for="loginPassWord">Password</label>
+        <input
+          id="loginPassWord"
+          class="login-password"
+          type="text"
+          required
+          placeholder="Enter your password"
+        />
+        <button type="submit">Register</button>
+      </form>
+    </section>
+    <section></section>
+  </body>
+</html>
