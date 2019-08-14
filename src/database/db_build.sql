@@ -17,7 +17,6 @@ CREATE TABLE login (
   password VARCHAR(100) NOT NULL,
 );
 
-
 INSERT INTO bugbears (category, name, rage_level, description)
 VALUES
 ('humans', 'grumpycat44', 4, 'stroking me backwards'),
