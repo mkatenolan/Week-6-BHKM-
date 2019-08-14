@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, intial-scale=1" />
     <title>Bugbears Login</title>
@@ -11,30 +11,63 @@
       href="https://fonts.googleapis.com/css?family=Miriam+Libre|Playfair+Display&display=swap"
       rel="stylesheet"
     />
-
   </head>
-
+  
   <body>
-<h1> Welcome to Bugbears </h1>
-<section class="login-register">
+    <h1>Welcome to Bugbears</h1>
+    <section class="login-register">
+      <form class="register-form">
+        <label for="registerUserName">Username</label>
+        <input
+          id="registerUserName"
+          class="register-username"
+          type="text"
+          required
+          placeholder="Enter your username"
+          oninvalid="this.setCustomValidity('Enter your username')"
+          oninput="this.setCustomValidity('')"
+        />
+        <label for="registerPassWord">Password</label>
+        <input
+          id="registerPassWord"
+          class="register-password"
+          type="text"
+          required
+          placeholder="Enter a password"
+        />
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          id="confirmPassword"
+          class="confirm-password"
+          type="text"
+          required
+          placeholder="Re-enter your password"
+        />
+        <button type="submit">Register</button>
+      </form>
 
-<form class="register-form">
-<label for="userName">Username</label>
-  <input id="userName" class="username" type="text" required placeholder="Enter your username"
-  oninvalid="this.setCustomValidity('Enter your username')"
-  oninput="this.setCustomValidity('')"/>
-<label for="passWord">Password</label>
-    <input id="passWord" class="password" type="text" required placeholder="Enter a password"/>
-<label for="confirmPassword">Confirm Password</label>
-    <input id="confirmPassword" class="confirm-password" type="text" required placeholder="Re-enter your password"/>
-</form>
-<submit>Register</submit>
-<form class="login-form">
-</form>
-
-
- </section>
-<section> </section>
-
+      <form class="login-form">
+        <label for="loginUserName">Username</label>
+        <input
+          id="loginUserName"
+          class="login-username"
+          type="text"
+          required
+          placeholder="Enter your username"
+          oninvalid="this.setCustomValidity('Enter your username')"
+          oninput="this.setCustomValidity('')"
+        />
+        <label for="loginPassWord">Password</label>
+        <input
+          id="loginPassWord"
+          class="login-password"
+          type="text"
+          required
+          placeholder="Enter your password"
+        />
+        <button type="submit">Register</button>
+      </form>
+    </section>
+    <section></section>
   </body>
 </html>
