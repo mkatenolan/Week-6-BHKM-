@@ -12,11 +12,16 @@
       rel="stylesheet"
     />
   </head>
-  
+
   <body>
     <h1>Welcome to Bugbears</h1>
     <section class="login-register">
-      <form class="register-form">
+      <form
+        class="register-form"
+        action="/register"
+        method="POST"
+        aria-label="Enter a username and password to register"
+      >
         <label for="registerUserName">Username</label>
         <input
           id="registerUserName"
@@ -46,7 +51,12 @@
         <button type="submit">Register</button>
       </form>
 
-      <form class="login-form">
+      <form
+        class="login-form"
+        action="/login"
+        method="POST"
+        aria-label="Enter your username and password to login"
+      >
         <label for="loginUserName">Username</label>
         <input
           id="loginUserName"
