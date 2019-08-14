@@ -11,10 +11,30 @@
       href="https://fonts.googleapis.com/css?family=Miriam+Libre|Playfair+Display&display=swap"
       rel="stylesheet"
     />
-    
+
   </head>
 
   <body>
+<h1> Welcome to Bugbears </h1>
+<section class="login-register">
+
+<form class="register-form">
+<label for="userName">Username</label>
+  <input id="userName" class="username" type="text" required placeholder="Enter your username"
+  oninvalid="this.setCustomValidity('Enter your username')"
+  oninput="this.setCustomValidity('')"/>
+<label for="passWord">Password</label>
+    <input id="passWord" class="password" type="text" required placeholder="Enter a password"/>
+<label for="confirmPassword">Confirm Password</label>
+    <input id="confirmPassword" class="confirm-password" type="text" required placeholder="Re-enter your password"/>
+</form>
+<submit>Register</submit>
+<form class="login-form">
+</form>
+
+
+ </section>
+<section> </section>
 
   </body>
 </html>
