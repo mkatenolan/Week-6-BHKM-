@@ -9,15 +9,12 @@ const {
   removeToken
 } = require("./handler");
 
-<<<<<<< HEAD
+
 const passwordHandling = require("../encryption/password-handling");
 
-||||||| merged common ancestors
-=======
 const secret = "secretKey";
 const payload = { logged_in: "true" };
 
->>>>>>> master
 const router = (req, res) => {
   const endpoint = req.url;
   console.log(endpoint);
@@ -37,7 +34,6 @@ const router = (req, res) => {
     removeToken(req, res);
   } else if (endpoint === "/register") {
     postRegister(req, res);
-
   } else {
     res.writeHead(404, { "Content-Type": "text/html" });
     res.end("<h1>File not found </h1>");

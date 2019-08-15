@@ -1,7 +1,7 @@
 const bugBearTable = document.querySelector(".bugbear-table-section");
 const bugBearForm = document.querySelector(".bugbear-form-section");
 const bugBearList = document.querySelector(".list");
-const logoutButton = document.querySelector(".logout-button");
+// const logoutButton = document.querySelector(".logout-button");
 
 let body = document.querySelector("body");
 
@@ -54,3 +54,13 @@ window.onload = () => {
   xhr.open("GET", getUrl, true);
   xhr.send();
 };
+
+let description = document.querySelector('.description');
+let rage = document.querySelector('.rage');
+let category = document.querySelector('.category');
+
+if (!req.headers.cookie) {
+  description.addEventListener("focus", e => {
+    e.alert("YOU ARE NOT LOGGED IN!");
+  })
+}
