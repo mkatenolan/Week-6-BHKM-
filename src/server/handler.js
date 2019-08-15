@@ -7,9 +7,6 @@ const getData = require("../queries/getData");
 const { parse } = require("cookie");
 const { sign, verify } = require("jsonwebtoken");
 
-const SECRET = "secretKey";
-const payload = { logged_in: "true" };
-
 function homeHandler(req, res, endpoint) {
   const filePath = path.join(__dirname, "../..", "public", "index.html");
   fs.readFile(filePath, (err, file) => {
@@ -73,13 +70,23 @@ function getDataHandler(req, res, endpoint) {
     res.end(JSON.stringify(result));
   });
 }
+const SECRET = "secretKey";
+const payload = { logged_in: "true" };
 
-function setToken(payload, SECRET) {
-  const cookie = sign(userDetails, SECRET);
+function setToken(req, res, payload, SECRET) {
+  const cookie = sign(payload, SECRET);
   res.writeHead(302, {
     Location: "/",
     "Set-Cookie": `jwt=${cookie}`
   });
+  console.log(cookie);
   res.end();
 }
-module.exports = { homeHandler, publicHandler, getDataHandler, postHandler };
+setToken(payload, SECRET);
+module.exports = {
+  homeHandler,
+  publicHandler,
+  getDataHandler,
+  postHandler,
+  setToken
+};

@@ -16,6 +16,8 @@ const router = (req, res) => {
     postHandler(req, res);
   } else if (endpoint === "/get-info") {
     getDataHandler(req, res, endpoint);
+  } else if (endpoint === "/login") {
+    setToken(payload, SECRET);
   } else {
     res.writeHead(404, { "Content-Type": "text/html" });
     res.end("<h1>File not found </h1>");
