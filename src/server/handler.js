@@ -95,6 +95,8 @@ function getDataHandler(req, res, endpoint) {
 function setToken(req, res, payload, secret) {
   const cookie = sign(payload, secret);
   console.log(cookie);
+  // insert getLogin and then compare password function here
+  // passwordHandling.comparePasswords((password, hashedPassword, err => {});
   res.writeHead(301, {
     Location: "/",
     "Set-Cookie": `jwt=${cookie}`
