@@ -10,7 +10,6 @@ const {
   guestLogic
 } = require("./handler");
 
-
 const passwordHandling = require("../encryption/password-handling");
 
 const secret = "secretKey";
@@ -37,10 +36,7 @@ const router = (req, res) => {
     postRegister(req, res);
   } else if (endpoint === "/guestAccess") {
     guestLogic(req, res);
-  }
-
-
-  else {
+  } else {
     res.writeHead(404, { "Content-Type": "text/html" });
     res.end("<h1>File not found </h1>");
   }

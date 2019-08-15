@@ -9,6 +9,7 @@ const { sign, verify } = require("jsonwebtoken");
 const secret = "secretKey";
 const payload = { logged_in: "true" };
 const passwordHandling = require("../encryption/password-handling");
+const postUD = require("../queries/postUD");
 
 function homeHandler(req, res, endpoint) {
   const filePath = path.join(__dirname, "../..", "public", "index.html");
@@ -79,7 +80,7 @@ const postHandler = (req, res) => {
         res.end("<h1>Not found!</h1>");
         console.log("this is the error:", err);
       }
-      res.writeHead(302, { Location: "/" });
+      res.writeHead(301, { Location: "/" });
       res.end();
     });
   });
@@ -95,7 +96,7 @@ function getDataHandler(req, res, endpoint) {
 function setToken(req, res, payload, secret) {
   const cookie = sign(payload, secret);
   console.log(cookie);
-  res.writeHead(302, {
+  res.writeHead(301, {
     Location: "/",
     "Set-Cookie": `jwt=${cookie}`
   });
@@ -118,11 +119,22 @@ function postRegister(req, res) {
   req.on("end", () => {
     const parsedData = qs.parse(allData);
     const registeredPassword = parsedData.registerPassword;
-    // console.log("This is registeredPassword", registeredPassword)
-    passwordHandling.hashPassword(registeredPassword);
-    // console.log(passwordHandling.hashPassword(registeredPassword));
-    res.writeHead(302, { Location: "/" });
-    res.end();
+    const username = parsedData.registerUserName;
+    passwordHandling
+      .hashPassword(registeredPassword)
+      .then(hashedPassword =>
+        postUD.postUD(username, hashedPassword, err => {
+          if (err) {
+            res.writehead(404, { "Content-Type": "text/html" });
+            res.end("<h1>Not found!</h1>");
+            console.log("this is the error post UD in handler:", err);
+          }
+        })
+      )
+      .then(() => {
+        res.writeHead(301, { Location: "/" });
+        res.end();
+      });
   });
 }
 
