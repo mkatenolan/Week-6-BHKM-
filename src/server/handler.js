@@ -4,6 +4,11 @@ const querystring = require("querystring");
 const qs = require("qs");
 const postBugbears = require("../queries/postData");
 const getData = require("../queries/getData");
+const { parse } = require("cookie");
+const { sign, verify } = require("jsonwebtoken");
+
+const SECRET = "secretKey";
+const payload = { logged_in: "true" };
 
 function homeHandler(req, res, endpoint) {
   const filePath = path.join(__dirname, "../..", "public", "index.html");
@@ -69,4 +74,12 @@ function getDataHandler(req, res, endpoint) {
   });
 }
 
+function setToken(payload, SECRET) {
+  const cookie = sign(userDetails, SECRET);
+  res.writeHead(302, {
+    Location: "/",
+    "Set-Cookie": `jwt=${cookie}`
+  });
+  res.end();
+}
 module.exports = { homeHandler, publicHandler, getDataHandler, postHandler };
