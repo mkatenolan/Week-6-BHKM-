@@ -6,6 +6,8 @@ const postBugbears = require("../queries/postData");
 const getData = require("../queries/getData");
 const { parse } = require("cookie");
 const { sign, verify } = require("jsonwebtoken");
+const secret = "secretKey";
+const payload = { logged_in: "true" };
 
 function homeHandler(req, res, endpoint) {
   const filePath = path.join(__dirname, "../..", "public", "index.html");
@@ -70,23 +72,27 @@ function getDataHandler(req, res, endpoint) {
     res.end(JSON.stringify(result));
   });
 }
-const SECRET = "secretKey";
-const payload = { logged_in: "true" };
 
-function setToken(req, res, payload, SECRET) {
-  const cookie = sign(payload, SECRET);
+function setToken(req, res, userInfo, secretKey) {
+  const cookie = sign(payload, secret);
   res.writeHead(302, {
-    Location: "/",
+    "Location": "/",
     "Set-Cookie": `jwt=${cookie}`
   });
   console.log(cookie);
   res.end();
 }
-setToken(payload, SECRET);
+
+function removeToken(req, res) {
+  res.writeHead(302, {'Location':'/login', 'Set-Cookie':'jwt=0; Max-Age=0'})
+  res.end();
+}
+
 module.exports = {
   homeHandler,
   publicHandler,
   getDataHandler,
   postHandler,
-  setToken
+  setToken,
+  removeToken
 };
