@@ -18,6 +18,19 @@ function homeHandler(req, res, endpoint) {
   });
 }
 
+function loginPageHandler(req, res, endpoint) {
+  const filePath = path.join(__dirname, "../..", "public", "login.html");
+  fs.readFile(filePath, (err, file) => {
+    if (err) {
+      res.writeHead(500, { "content-type": "text/html" });
+      res.end("<h1>We have an internal server error on our side!</h1>");
+    } else {
+      res.writeHead(200, { "content-type": "text/html" });
+      res.end(file);
+    }
+  });
+}
+
 function publicHandler(req, res, endpoint) {
   const extension = endpoint.split(".")[1];
   const extensionType = {
@@ -69,4 +82,23 @@ function getDataHandler(req, res, endpoint) {
   });
 }
 
-module.exports = { homeHandler, publicHandler, getDataHandler, postHandler };
+function postRegister(req, res) {
+  let allData = "";
+  req.on("data", chunk => {
+    allData += chunk;
+  });
+  req.on("end", () => {
+    console.log(allData);
+    res.writeHead(302, { Location: "/" });
+    res.end();
+  });
+}
+
+module.exports = {
+  homeHandler,
+  publicHandler,
+  getDataHandler,
+  postHandler,
+  postRegister,
+  loginPageHandler
+};
