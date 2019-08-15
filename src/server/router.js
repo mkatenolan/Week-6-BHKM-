@@ -14,10 +14,9 @@ const payload = { logged_in: "true" };
 const router = (req, res) => {
   const endpoint = req.url;
   console.log(endpoint);
-  // if (endpoint === "/") {
-  //   homeHandler(req, res);
-  // }
   if (endpoint === "/") {
+    homeHandler(req, res);
+  } else if (endpoint === "/login-page") {
     loginPageHandler(req, res);
   } else if (endpoint.includes("public")) {
     publicHandler(req, res, endpoint);
@@ -27,7 +26,7 @@ const router = (req, res) => {
     getDataHandler(req, res, endpoint);
   } else if (endpoint === "/login") {
     setToken(req, res, payload, secret);
-  } else if(endpoint === "/logout") {
+  } else if (endpoint === "/logout") {
     removeToken(req, res);
   } else if (endpoint == "/register") {
     postRegister(req, res);
