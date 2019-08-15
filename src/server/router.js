@@ -27,7 +27,6 @@ const router = (req, res) => {
     removeToken(req, res);
   } else if (endpoint == "/register") {
     postRegister(req, res);
-
   } else {
     res.writeHead(404, { "Content-Type": "text/html" });
     res.end("<h1>File not found </h1>");
