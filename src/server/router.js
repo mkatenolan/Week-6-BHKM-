@@ -4,18 +4,26 @@ const {
   getDataHandler,
   postHandler,
   postRegister,
-  loginPageHandler
+  loginPageHandler,
+  setToken,
+  removeToken
 } = require("./handler");
 
+<<<<<<< HEAD
 const passwordHandling = require("../encryption/password-handling");
 
+||||||| merged common ancestors
+=======
+const secret = "secretKey";
+const payload = { logged_in: "true" };
+
+>>>>>>> master
 const router = (req, res) => {
   const endpoint = req.url;
   console.log(endpoint);
-  // if (endpoint === "/") {
-  //   homeHandler(req, res);
-  // }
   if (endpoint === "/") {
+    homeHandler(req, res);
+  } else if (endpoint === "/login-page") {
     loginPageHandler(req, res);
   } else if (endpoint.includes("public")) {
     publicHandler(req, res, endpoint);
@@ -24,12 +32,11 @@ const router = (req, res) => {
   } else if (endpoint === "/get-info") {
     getDataHandler(req, res, endpoint);
   } else if (endpoint === "/login") {
-    setToken(req, res, userInfo, secretKey);
-  } else if(endpoint === "/logout") {
+    setToken(req, res, payload, secret);
+  } else if (endpoint === "/logout") {
     removeToken(req, res);
   } else if (endpoint === "/register") {
     postRegister(req, res);
-    // passwordHandling.logPw(hashPassword);
 
   } else {
     res.writeHead(404, { "Content-Type": "text/html" });

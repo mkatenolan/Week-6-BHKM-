@@ -12,6 +12,10 @@ const passwordHandling = require("../encryption/password-handling");
 
 function homeHandler(req, res, endpoint) {
   const filePath = path.join(__dirname, "../..", "public", "index.html");
+  if (!req.headers.cookie) {
+    res.writeHead(301, { Location: "/login-page" });
+    res.end();
+  }
   fs.readFile(filePath, (err, file) => {
     if (err) {
       res.writeHead(500, { "content-type": "text/html" });
@@ -87,18 +91,21 @@ function getDataHandler(req, res, endpoint) {
   });
 }
 
-function setToken(req, res, userInfo, secretKey) {
+function setToken(req, res, payload, secret) {
   const cookie = sign(payload, secret);
   console.log(cookie);
   res.writeHead(302, {
-    "Location": "/",
+    Location: "/",
     "Set-Cookie": `jwt=${cookie}`
   });
   res.end();
 }
 
 function removeToken(req, res) {
-  res.writeHead(302, {'Location':'/login', 'Set-Cookie':'jwt=0; Max-Age=0'})
+  res.writeHead(301, {
+    Location: "/login-page",
+    "Set-Cookie": "jwt=0; Max-Age=0"
+  });
   res.end();
 }
 
