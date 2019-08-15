@@ -10,6 +10,7 @@ const secret = "secretKey";
 const payload = { logged_in: "true" };
 const passwordHandling = require("../encryption/password-handling");
 const postUD = require("../queries/postUD");
+const getUD = require("../queries/getUD");
 
 function homeHandler(req, res, endpoint) {
   const filePath = path.join(__dirname, "../..", "public", "index.html");
@@ -94,13 +95,35 @@ function getDataHandler(req, res, endpoint) {
 }
 
 function setToken(req, res, payload, secret) {
-  const cookie = sign(payload, secret);
-  console.log(cookie);
-  res.writeHead(301, {
-    Location: "/",
-    "Set-Cookie": `jwt=${cookie}`
+  let allData = "";
+  req.on("data", chunk => {
+    allData += chunk;
   });
-  res.end();
+  req.on("end", () => {
+    const parsedData = qs.parse(allData);
+    const username = parsedData.loginUserName;
+    const password = parsedData.LoginPassWord;
+
+    const cookie = sign(payload, secret);
+    console.log(cookie);
+    // insert getUD and then compare password function here
+    getUD
+      .getUD(username, password)
+      .then(dbPassword => {
+        console.log(dbPassword);
+      })
+      .then(result => {
+        if (result == false) {
+          console.log(result);
+        } else {
+          res.writeHead(301, {
+            Location: "/",
+            "Set-Cookie": `jwt=${cookie}`
+          });
+          res.end();
+        }
+      });
+  });
 }
 
 function removeToken(req, res) {
