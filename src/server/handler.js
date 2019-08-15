@@ -8,6 +8,7 @@ const { parse } = require("cookie");
 const { sign, verify } = require("jsonwebtoken");
 const secret = "secretKey";
 const payload = { logged_in: "true" };
+const passwordHandling = require("../encryption/password-handling");
 
 function homeHandler(req, res, endpoint) {
   const filePath = path.join(__dirname, "../..", "public", "index.html");
@@ -109,10 +110,12 @@ function postRegister(req, res) {
   req.on("end", () => {
     console.log("got into end of post register handler function");
     console.log("allData", allData);
+    const parsedData = qs.parse(allData);
+    const registeredPassword = parsedData["register-password"];
+    passwordHandling(register-password);
     res.writeHead(302, { Location: "/" });
     res.end();
   });
-
 }
 
 module.exports = {
