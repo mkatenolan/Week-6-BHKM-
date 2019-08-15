@@ -2,14 +2,19 @@ const {
   homeHandler,
   publicHandler,
   getDataHandler,
-  postHandler
+  postHandler,
+  postRegister,
+  loginPageHandler
 } = require("./handler");
 
 const router = (req, res) => {
   const endpoint = req.url;
   console.log(endpoint);
+  // if (endpoint === "/") {
+  //   homeHandler(req, res);
+  // }
   if (endpoint === "/") {
-    homeHandler(req, res);
+    loginPageHandler(req, res);
   } else if (endpoint.includes("public")) {
     publicHandler(req, res, endpoint);
   } else if (endpoint === "/post-bugbear") {
@@ -20,6 +25,9 @@ const router = (req, res) => {
     setToken(req, res, userInfo, secretKey);
   } else if(endpoint === "/logout") {
     removeToken(req, res);
+  } else if (endpoint == "/register") {
+    postRegister(req, res);
+
   } else {
     res.writeHead(404, { "Content-Type": "text/html" });
     res.end("<h1>File not found </h1>");

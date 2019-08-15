@@ -22,6 +22,19 @@ function homeHandler(req, res, endpoint) {
   });
 }
 
+function loginPageHandler(req, res, endpoint) {
+  const filePath = path.join(__dirname, "../..", "public", "login.html");
+  fs.readFile(filePath, (err, file) => {
+    if (err) {
+      res.writeHead(500, { "content-type": "text/html" });
+      res.end("<h1>We have an internal server error on our side!</h1>");
+    } else {
+      res.writeHead(200, { "content-type": "text/html" });
+      res.end(file);
+    }
+  });
+}
+
 function publicHandler(req, res, endpoint) {
   const extension = endpoint.split(".")[1];
   const extensionType = {
@@ -86,6 +99,19 @@ function setToken(req, res, userInfo, secretKey) {
 function removeToken(req, res) {
   res.writeHead(302, {'Location':'/login', 'Set-Cookie':'jwt=0; Max-Age=0'})
   res.end();
+  
+function postRegister(req, res) {
+  let allData = "";
+  req.on("data", chunk => {
+    allData += chunk;
+  });
+  req.on("end", () => {
+    console.log("got into end of post register handler function");
+    console.log("allData", allData);
+    res.writeHead(302, { Location: "/" });
+    res.end();
+  });
+
 }
 
 module.exports = {
@@ -94,5 +120,7 @@ module.exports = {
   getDataHandler,
   postHandler,
   setToken,
-  removeToken
+  removeToken,
+  postRegister,
+  loginPageHandler
 };
