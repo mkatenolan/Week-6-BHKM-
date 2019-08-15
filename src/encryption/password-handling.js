@@ -14,8 +14,19 @@ const hashPassword = password => {
   });
 };
 
-const comparePasswords = (password, hashedPassword, callback) => {
-  bcrypt.compare(password, hashedPassword, callback);
+const comparePasswords = (password, hashedPassword) => {
+  return new Promise((resolve, reject) => {
+    bcrypt
+      .compare(password, hashedPassword)
+      .then(result => {
+        resolve(result);
+        console.log("this is the compare passwords result:", result);
+      })
+      .catch(err => {
+        reject(err);
+        console.log("password compare error:", reject(err));
+      });
+  });
 };
 
 module.exports = {
