@@ -88,7 +88,8 @@ function postRegister(req, res) {
     allData += chunk;
   });
   req.on("end", () => {
-    console.log(allData);
+    console.log("got into end of post register handler function");
+    console.log("allData", allData);
     res.writeHead(302, { Location: "/" });
     res.end();
   });
