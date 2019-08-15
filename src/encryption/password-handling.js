@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 
 const hashPassword = password => {
-  console.log("Im in the hash")
+  console.log("this is password", password);
   return new Promise((resolve, reject) => {
     bcrypt.genSalt(10)
     .then(generatedSalt => bcrypt.hash(password, generatedSalt))

@@ -108,11 +108,11 @@ function postRegister(req, res) {
     allData += chunk;
   });
   req.on("end", () => {
-    console.log("got into end of post register handler function");
-    console.log("allData", allData);
     const parsedData = qs.parse(allData);
-    const registeredPassword = parsedData["register-password"];
-    passwordHandling(register-password);
+    const registeredPassword = parsedData.registerPassword;
+    console.log("This is registeredPassword", registeredPassword)
+    passwordHandling.hashPassword(registeredPassword);
+    console.log(passwordHandling.hashPassword(registeredPassword));
     res.writeHead(302, { Location: "/" });
     res.end();
   });
