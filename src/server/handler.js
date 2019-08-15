@@ -6,8 +6,9 @@ const postBugbears = require("../queries/postData");
 const getData = require("../queries/getData");
 const { parse } = require("cookie");
 const { sign, verify } = require("jsonwebtoken");
-// const secret = "secretKey";
-// const payload = { logged_in: "true" };
+const secret = "secretKey";
+const payload = { logged_in: "true" };
+const passwordHandling = require("../encryption/password-handling");
 
 function homeHandler(req, res, endpoint) {
   const filePath = path.join(__dirname, "../..", "public", "index.html");
@@ -114,8 +115,11 @@ function postRegister(req, res) {
     allData += chunk;
   });
   req.on("end", () => {
-    console.log("got into end of post register handler function");
-    console.log("allData", allData);
+    const parsedData = qs.parse(allData);
+    const registeredPassword = parsedData.registerPassword;
+    // console.log("This is registeredPassword", registeredPassword)
+    passwordHandling.hashPassword(registeredPassword);
+    // console.log(passwordHandling.hashPassword(registeredPassword));
     res.writeHead(302, { Location: "/" });
     res.end();
   });
