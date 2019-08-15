@@ -1,4 +1,4 @@
-# Week-6-BHKM-
+# Week-6&7-BHKM-
 Database project 
 
 Andy, Christine, Emmanuel, Martha
@@ -13,19 +13,17 @@ Team BHKM - Bugbear
 * This week's project will involve setting up a database which you connect to via a node.js server. You'll use your data to make a dynamic web app for your front-end.
 * Some suggested project ideas are below. Feel free to modify according to your interest, provided your idea has similar functionality.
 
-### Requirements
-* Simple web app with a node server and a database
-* Your database comes with a schema, which should be documented in your readme (along with any other architectural decisions)
-* Database hosted on Heroku, or locally
-* Build script for your database
-* Security concerns appropriately considered (you must protect against script injections!)
-* Content dynamic, but DOM manipulation kept to a minimum
-* Mobile-first design
-* Clear user journey (even if you take one of our suggested ideas, document the user journey in your readme)
-* test your server routes with supertest
-* test your pure functions both server and client side
-* set up a test database so that you can test your database queries
-* Note We don't expect you to authenticate users (i.e. have a login or signup page), or even to simulate this feature. We'll cover how to do that properly in later weeks. Since these ideas were designed with Founders & Coders users in mind, we'll rely on trust instead of authentication :)
+## Requirements
+- [x] Login form with 2 fields - username and password
+- [x] Users only have to log in once (i.e. implement a cookie-based session on login)
+- [ ] Username is visible on each page of the site after logging in
+- [ ] Any user-submitted content should be labelled with the authors username
+- [ ] There should be protected routes and unprotected routes that depend on the user having a cookie or not (or what level of access they have).
+- [ ] Website content should be stored in a database
+- [ ] Include thorough tests on the back-end, testing pure functions and testing routes using Supertest. If you make external API calls, use Nock to mock the response for your tests.
+- [ ] Test front-end logic, we don't expect tests on the DOM.
+
+---
 
 ### code of conduct
 
@@ -51,33 +49,61 @@ Team BHKM - Bugbear
 - [ ] Logo in top left, description and a search bar
 - [ ] Field inputs are category, name and rant
 
-
-### Stretchgoals
-- [ ] GIFS
-- [ ] Colour coded based upon your level of rage
-- [ ] On selection - order previous entries by category
-- [ ] 
+## Stretch goals
+- [ ] Client-side and server-side validation on login form, including error handling that provides feedback to users
+- [ ] Add like functionality to content
+- [ ] Add comment functionality to content
+- [ ] Allow users to delete the content that they have submitted
+- [ ] Add roles and permissions - Have an "admin" level user (role) who can edit and delete all content 😱 (permissions)
+- [ ] Refactor xmlhttp to fetch and callbacks to promises 
+- [ ] Email address for users 
 
 ### TO-DO
-- [x] file structure?
-- [x] Set-up repo 
-- [x] Set-up Heroku + database URL 
-- [x] set-up Travis 
-- [x] create empty files
-- [x]boilderplate HTML, CSS 
-- [x]set-up server file 
-- [x]set-up router file 
-- [x]handler file 
-- [x]install dependencies --> tape, tap-spec, ? 
-- [x]config.env file
-- [x]decide tables + write SQL file 
-- [x]db_connection file 
-- [x]build script file 
-- [x]test folder - server-side tests + front-end tests 
-- [x]queries file 
-- [ ]html 
-- [ ]CSS 
-- [ ]front-end JS file 
+## TO-DO / Process
+
+### Frontend
+
+- [x] Setting up the HTML for the landing page
+- [x] Putting in the log-in forms
+- [x] Setting up the front-end validation  
+
+#### Backend 
+
+Database: 
+- [x] Create new database table for log-in info 
+- [ ] New query 
+- [ ] Backend validation via router and handler
+
+
+##### Log in
+- [ ] Send username and password info to backend
+- [ ] Backend check to see if the two match
+- [ ] Sending sign up data to backend 
+- [ ] Comparing user infor to databse checking if user existis 
+- [ ] Hashing pasword
+- [ ] Sending error messages if user exists
+
+
+##### Register
+- [ ] Post request from front end (form -> send to backend)
+- [ ] Backend Router -> Handler (use of similar functions to "postData" and "getData" from last week)
+- [ ] Update database 
+- [ ] Hashing + salting pasword (Bcrypt module)
+
+
+---
+
+### Code of Conduct
+* 
+* BEM
+* Ensure equal number of commits
+* Commit often
+* Switch regularly but (do few commits first)
+* Compartmentalise and work on the dedicated branch (pushing only needed after milestones)
+* Feature and fix branches
+
+---
+
 
 
 ### How to create local test database
@@ -91,4 +117,21 @@ Team BHKM - Bugbear
 
 - [ ] go out of the pgcli and run: node <filebathtobuild.js> (node src/database/build.js = this will run the build file which will also build the remote database on heroku)
 - [ ] you can now outside of pgcli write: pgcli <linkforherokudatabase> (selecting SELECT * from <databasename> will populate the correct base)
+ 
+ ### Glossary
+
+**Hash** - Server side - turns plain text password into hashed string of characters
+Link: https://github.com/foundersandcoders/ws-password-management
+
+**Salt** - Random set of characters that generated by decrypt to make it difficult to decrupy usin ghte rainbow table
+Link: https://github.com/foundersandcoders/ws-password-management
+
+**Cookie** - A cookie is a piece of data that your server, sends back to the browser, which the browser will then keep, and attach to every future request to that domain. 
+Link: https://github.com/foundersandcoders/ws-cookies
+
+
+### Useful Tips
+Add new table to database - node src.database/db_build.js
+SELECT * FROM *new added table
+
  
