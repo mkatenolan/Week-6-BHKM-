@@ -88,18 +88,19 @@ function getDataHandler(req, res, endpoint) {
 
 function setToken(req, res, userInfo, secretKey) {
   const cookie = sign(payload, secret);
+  console.log(cookie);
   res.writeHead(302, {
     "Location": "/",
     "Set-Cookie": `jwt=${cookie}`
   });
-  console.log(cookie);
   res.end();
 }
 
 function removeToken(req, res) {
   res.writeHead(302, {'Location':'/login', 'Set-Cookie':'jwt=0; Max-Age=0'})
   res.end();
-  
+}
+
 function postRegister(req, res) {
   let allData = "";
   req.on("data", chunk => {
