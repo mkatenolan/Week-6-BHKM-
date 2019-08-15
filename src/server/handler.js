@@ -103,17 +103,26 @@ function setToken(req, res, payload, secret) {
     const username = parsedData.loginUserName;
     const password = parsedData.LoginPassWord;
 
-  const cookie = sign(payload, secret);
-  console.log(cookie);
-  // insert getUD and then compare password function here
-  getUD.getUD(username, password)
-  .then(dbPassword => passwordHandling.comparePasswords())
-  // passwordHandling.comparePasswords((password, hashedPassword, err => {});
-  res.writeHead(301, {
-    Location: "/",
-    "Set-Cookie": `jwt=${cookie}`
+    const cookie = sign(payload, secret);
+    console.log(cookie);
+    // insert getUD and then compare password function here
+    getUD
+      .getUD(username, password)
+      .then(dbPassword => {
+        console.log(dbPassword);
+      })
+      .then(result => {
+        if (result == false) {
+          console.log(result);
+        } else {
+          res.writeHead(301, {
+            Location: "/",
+            "Set-Cookie": `jwt=${cookie}`
+          });
+          res.end();
+        }
+      });
   });
-  res.end();
 }
 
 function removeToken(req, res) {
