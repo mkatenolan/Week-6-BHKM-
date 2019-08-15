@@ -54,8 +54,3 @@ window.onload = () => {
   xhr.open("GET", getUrl, true);
   xhr.send();
 };
-
-//Set endpoint on logout button click
-logoutButton.addEventListener('click', () => {
-  endpoint === '/logout';
-});

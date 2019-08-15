@@ -90,7 +90,7 @@ function setToken(req, res, payload, secret) {
   const cookie = sign(payload, secret);
   console.log(cookie);
   res.writeHead(302, {
-    "Location": "/",
+    'Location': "/",
     "Set-Cookie": `jwt=${cookie}`
   });
   res.end();
