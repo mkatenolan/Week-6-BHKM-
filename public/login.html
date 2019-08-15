@@ -51,7 +51,7 @@
           required
           placeholder="Re-enter your password"
         />
-        <button type="submit">Register</button>
+        <button type="submit" class="register-button">Register</button>
       </form>
 
       <form
@@ -80,9 +80,19 @@
           required
           placeholder="Enter your password"
         />
-        <button type="submit" name="submit">Sign In</button>
+        <button class="login-button" type="submit" name="submit">Sign In</button>
       </form>
     </section>
-    <section></section>
+    <section>
+      <form
+      class="guestForm"
+      action="/guestAccess"
+      method="POST"
+      aria-label="Continue as guest"
+      >
+        <button name="guestButton" class="guestButton">Continue as guest</button>
+      </form>
+    </section>
+    <script src="/public/script.js" async defer></script>
   </body>
 </html>

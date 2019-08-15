@@ -14,6 +14,7 @@ const postUD = require("../queries/postUD");
 function homeHandler(req, res, endpoint) {
   const filePath = path.join(__dirname, "../..", "public", "index.html");
   if (!req.headers.cookie) {
+    console.log(req.headers.cookie)
     res.writeHead(301, { Location: "/login-page" });
     res.end();
   }
@@ -137,6 +138,11 @@ function postRegister(req, res) {
   });
 }
 
+function guestLogic(req, res){
+  res.writeHead(302, { Location: "/", 'Set-Cookie': 'logged_in=false' });
+  res.end();
+}
+
 module.exports = {
   homeHandler,
   publicHandler,
@@ -145,5 +151,6 @@ module.exports = {
   setToken,
   removeToken,
   postRegister,
-  loginPageHandler
+  loginPageHandler,
+  guestLogic
 };
