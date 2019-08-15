@@ -5,7 +5,8 @@ const {
   postHandler,
   postRegister,
   loginPageHandler,
-  setToken
+  setToken,
+  removeToken
 } = require("./handler");
 
 const secret = "secretKey";

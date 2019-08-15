@@ -101,8 +101,8 @@ function setToken(req, res, payload, secret) {
 }
 
 function removeToken(req, res) {
-  res.writeHead(302, {
-    Location: "/login",
+  res.writeHead(301, {
+    Location: "/login-page",
     "Set-Cookie": "jwt=0; Max-Age=0"
   });
   res.end();
