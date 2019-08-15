@@ -6,7 +6,8 @@ const {
   postRegister,
   loginPageHandler,
   setToken,
-  removeToken
+  removeToken,
+  guestLogic
 } = require("./handler");
 
 const passwordHandling = require("../encryption/password-handling");
@@ -33,6 +34,8 @@ const router = (req, res) => {
     removeToken(req, res);
   } else if (endpoint === "/register") {
     postRegister(req, res);
+  } else if (endpoint === "/guestAccess") {
+    guestLogic(req, res);
   } else {
     res.writeHead(404, { "Content-Type": "text/html" });
     res.end("<h1>File not found </h1>");
