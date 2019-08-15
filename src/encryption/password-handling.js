@@ -5,11 +5,18 @@ const hashPassword = password => {
   return new Promise((resolve, reject) => {
     bcrypt.genSalt(10)
     .then(generatedSalt => bcrypt.hash(password, generatedSalt))
-    .then(hashedPassword => resolve(hashedPassword))
-    .catch(error => reject(error))
+    .then(hashedPassword => {console.log(hashedPassword);
+      resolve(hashedPassword);
+    })
+    .catch(error => reject(error));
   })
 };
 
+// const logPw = (hashPassword) => {
+//   console.log(hashedPassword);
+// }
+
 module.exports = {
   hashPassword
+  // logPw
 };

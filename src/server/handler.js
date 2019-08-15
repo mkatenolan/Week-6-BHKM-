@@ -110,9 +110,9 @@ function postRegister(req, res) {
   req.on("end", () => {
     const parsedData = qs.parse(allData);
     const registeredPassword = parsedData.registerPassword;
-    console.log("This is registeredPassword", registeredPassword)
+    // console.log("This is registeredPassword", registeredPassword)
     passwordHandling.hashPassword(registeredPassword);
-    console.log(passwordHandling.hashPassword(registeredPassword));
+    // console.log(passwordHandling.hashPassword(registeredPassword));
     res.writeHead(302, { Location: "/" });
     res.end();
   });

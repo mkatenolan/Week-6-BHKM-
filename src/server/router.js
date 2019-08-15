@@ -7,6 +7,8 @@ const {
   loginPageHandler
 } = require("./handler");
 
+const passwordHandling = require("../encryption/password-handling");
+
 const router = (req, res) => {
   const endpoint = req.url;
   console.log(endpoint);
@@ -25,8 +27,9 @@ const router = (req, res) => {
     setToken(req, res, userInfo, secretKey);
   } else if(endpoint === "/logout") {
     removeToken(req, res);
-  } else if (endpoint == "/register") {
+  } else if (endpoint === "/register") {
     postRegister(req, res);
+    // passwordHandling.logPw(hashPassword);
 
   } else {
     res.writeHead(404, { "Content-Type": "text/html" });
