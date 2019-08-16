@@ -13,26 +13,27 @@ window.onload = () => {
 
   const createDom = response => {
     response.forEach(function(obj) {
-      const listitem = document.createElement("li");
+      let listitem = document.createElement("tr");
 
-      // add category p
 
-      const category = document.createElement("p");
+      let category = document.createElement("td");
+
       category.textContent = obj.category;
 
-      // add name p
+ 
 
-      const name = document.createElement("p");
+
+      let name = document.createElement("td");
       name.textContent = obj.name;
 
-      // add rage_level p
+   
 
-      const rageLevel = document.createElement("p");
+
+
+      let rageLevel = document.createElement("td");
       rageLevel.textContent = obj.rage_level;
 
-      // add description p
-
-      const description = document.createElement("p");
+      let description = document.createElement("td");
       description.textContent = obj.description;
 
       // append children
