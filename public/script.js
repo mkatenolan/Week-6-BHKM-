@@ -15,26 +15,26 @@ window.onload = () => {
 
   let createDom = response => {
     response.forEach(function(obj) {
-      let listitem = document.createElement("li");
+      let listitem = document.createElement("tr");
 
       // add category p
 
-      let category = document.createElement("p");
+      let category = document.createElement("td");
       category.textContent = obj.category;
 
       // add name p
 
-      let name = document.createElement("p");
+      let name = document.createElement("td");
       name.textContent = obj.name;
 
       // add rage_level p
 
-      let rageLevel = document.createElement("p");
+      let rageLevel = document.createElement("td");
       rageLevel.textContent = obj.rage_level;
 
       // add description p
 
-      let description = document.createElement("p");
+      let description = document.createElement("td");
       description.textContent = obj.description;
 
       // append children
