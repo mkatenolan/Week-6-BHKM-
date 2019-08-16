@@ -107,18 +107,18 @@ function postLogin(req, res, payload, secret) {
     getUD
       .getUD(username, password)
       .then(dbPassword => {
-        console.log("this is dbPassword", dbPassword);
-        console.log("this is password", password);
-        passwordHandling.comparePasswords(dbPassword, password);
-      })
-      .then(result => {
-        if (result == false) {
-          console.log(result);
-        } else {
-          setToken(req, res, payload, secret);
-          res.writeHead(302, { Location: "/" });
-          res.end();
-        }
+        // console.log("this is dbPassword", dbPassword);
+        // console.log("this is password", password);
+        passwordHandling.comparePasswords(password, dbPassword).then(result => {
+          // console.log("result in handler", result);
+          if (result == false) {
+            // console.log(result);
+          } else {
+            setToken(req, res, payload, secret);
+            res.writeHead(302, { Location: "/" });
+            res.end();
+          }
+        });
       })
       .catch(err =>
         console.log("error - password was not found in database:", err)
