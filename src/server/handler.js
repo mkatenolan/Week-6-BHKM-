@@ -172,8 +172,10 @@ function postRegister(req, res, payload, secret) {
   });
 }
 
-function guestLogic(req, res) {
-  res.writeHead(302, { Location: "/", "Set-Cookie": "logged_in=false" });
+
+function guestLogic(req, res, secret){
+  const guestCookie = sign({user: "guest"}, secret);
+  res.writeHead(302, { Location: "/", 'Set-Cookie': `jwt=${guestCookie}` });
   res.end();
 }
 

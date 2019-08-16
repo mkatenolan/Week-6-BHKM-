@@ -1,7 +1,7 @@
 const bugBearTable = document.querySelector(".bugbear-table-section");
 const bugBearForm = document.querySelector(".bugbear-form-section");
 const bugBearList = document.querySelector(".list");
-
+const guestButton = document.querySelector(".guestButton");
 // const logoutButton = document.querySelector(".logout-button");
 
 const body = document.querySelector("body");
@@ -20,13 +20,13 @@ window.onload = () => {
 
       category.textContent = obj.category;
 
- 
+
 
 
       let name = document.createElement("td");
       name.textContent = obj.name;
 
-   
+
 
 
 
@@ -57,6 +57,16 @@ window.onload = () => {
   xhr.send();
 };
 
-const description = document.querySelector(".description");
-const rage = document.querySelector(".rage");
-const category = document.querySelector(".category");
+guestButton.addEventListener('click', (e) => {
+  document.cookie = "logged_in= 'false'";
+})
+//
+// const description = document.querySelector('.description');
+// // // const rage = document.querySelector(".rage");
+// // // const category = document.querySelector(".category");
+// // //
+// description.addEventListener('focus', (e) => {
+//   if(document.cookie.includes('false')){
+//     alert('Please login to leave a rant')
+//   });
+// }, true);
