@@ -29,6 +29,7 @@
           name="registerUserName"
           type="text"
           required
+          maxlength="30"
           placeholder="Enter your username"
           oninvalid="this.setCustomValidity('Enter your username')"
           oninput="this.setCustomValidity('')"
@@ -40,6 +41,7 @@
           name="registerPassword"
           type="text"
           required
+          maxlength="30"
           placeholder="Enter a password"
         /> <br>
         <label for="confirmPassword">Confirm Password</label>
@@ -49,6 +51,7 @@
           name="confirmPassword"
           type="text"
           required
+          maxlength="30"
           placeholder="Re-enter your password"
         /> <br>
         <button type="submit" class="register-button">Register</button>
@@ -67,6 +70,7 @@
           name="loginUserName"
           type="text"
           required
+          maxlength="30"
           placeholder="Enter your username"
           oninvalid="this.setCustomValidity('Enter your username')"
           oninput="this.setCustomValidity('')"
@@ -78,19 +82,24 @@
           name="LoginPassWord"
           type="text"
           required
+          maxlength="30"
           placeholder="Enter your password"
         />
-        <button class="login-button" type="submit" name="submit">Sign In</button>
+        <button class="login-button" type="submit" name="submit">
+          Sign In
+        </button>
       </form>
     </section>
     <section class="guest-section">
       <form
-      class="guestForm"
-      action="/guestAccess"
-      method="POST"
-      aria-label="Continue as guest"
+        class="guestForm"
+        action="/guestAccess"
+        method="POST"
+        aria-label="Continue as guest"
       >
-        <button name="guestButton" class="guestButton">Continue as guest</button>
+        <button name="guestButton" class="guestButton">
+          Continue as guest
+        </button>
       </form>
     </section>
     <script src="/public/script.js" async defer></script>

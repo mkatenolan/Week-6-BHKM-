@@ -4,35 +4,34 @@ const bugBearList = document.querySelector(".list");
 
 // const logoutButton = document.querySelector(".logout-button");
 
-let body = document.querySelector("body");
+const body = document.querySelector("body");
 
 window.onload = () => {
   console.log("hi");
-  let xhr = new XMLHttpRequest();
-  let getUrl = "/get-info";
+  const xhr = new XMLHttpRequest();
+  const getUrl = "/get-info";
 
-
-
-  let createDom = response => {
+  const createDom = response => {
     response.forEach(function(obj) {
       let listitem = document.createElement("tr");
 
-      // add category p
 
       let category = document.createElement("td");
+
       category.textContent = obj.category;
 
-      // add name p
+ 
+
 
       let name = document.createElement("td");
       name.textContent = obj.name;
 
-      // add rage_level p
+   
+
+
 
       let rageLevel = document.createElement("td");
       rageLevel.textContent = obj.rage_level;
-
-      // add description p
 
       let description = document.createElement("td");
       description.textContent = obj.description;
@@ -58,6 +57,6 @@ window.onload = () => {
   xhr.send();
 };
 
-let description = document.querySelector('.description');
-let rage = document.querySelector('.rage');
-let category = document.querySelector('.category');
+const description = document.querySelector(".description");
+const rage = document.querySelector(".rage");
+const category = document.querySelector(".category");
