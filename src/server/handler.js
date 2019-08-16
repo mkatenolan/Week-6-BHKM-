@@ -15,7 +15,7 @@ const getUD = require("../queries/getUD");
 function homeHandler(req, res, endpoint) {
   const filePath = path.join(__dirname, "../..", "public", "index.html");
   if (!req.headers.cookie) {
-    console.log(req.headers.cookie)
+    console.log(req.headers.cookie);
     res.writeHead(301, { Location: "/login-page" });
     res.end();
   }
@@ -94,7 +94,7 @@ function getDataHandler(req, res, endpoint) {
   });
 }
 
-function setToken(req, res, payload, secret) {
+function postLogin(req, res, payload, secret) {
   let allData = "";
   req.on("data", chunk => {
     allData += chunk;
@@ -103,28 +103,37 @@ function setToken(req, res, payload, secret) {
     const parsedData = qs.parse(allData);
     const username = parsedData.loginUserName;
     const password = parsedData.LoginPassWord;
-
-    const cookie = sign(payload, secret);
-    console.log(cookie);
     // insert getUD and then compare password function here
     getUD
       .getUD(username, password)
       .then(dbPassword => {
-        console.log(dbPassword);
+        // console.log("this is dbPassword", dbPassword);
+        // console.log("this is password", password);
+        passwordHandling.comparePasswords(password, dbPassword).then(result => {
+          // console.log("result in handler", result);
+          if (result == false) {
+            // console.log(result);
+          } else {
+            setToken(req, res, payload, secret);
+            res.writeHead(302, { Location: "/" });
+            res.end();
+          }
+        });
       })
-      .then(result => {
-        if (result == false) {
-          console.log(result);
-        } else {
-          res.writeHead(301, {
-            Location: "/",
-            "Set-Cookie": `jwt=${cookie}`
-          });
-          res.end();
-        }
-      });
+      .catch(err =>
+        console.log("error - password was not found in database:", err)
+      );
   });
 }
+
+const setToken = (req, res, payload, secret) => {
+  const cookie = sign(payload, secret);
+  res.writeHead(301, {
+    Location: "/",
+    "Set-Cookie": `jwt=${cookie}`
+  });
+  res.end();
+};
 
 function removeToken(req, res) {
   res.writeHead(301, {
@@ -134,7 +143,7 @@ function removeToken(req, res) {
   res.end();
 }
 
-function postRegister(req, res) {
+function postRegister(req, res, payload, secret) {
   let allData = "";
   req.on("data", chunk => {
     allData += chunk;
@@ -143,6 +152,8 @@ function postRegister(req, res) {
     const parsedData = qs.parse(allData);
     const registeredPassword = parsedData.registerPassword;
     const username = parsedData.registerUserName;
+    // this should ideally only happen after passwords have been compared - to be added
+    setToken(req, res, payload, secret);
     passwordHandling
       .hashPassword(registeredPassword)
       .then(hashedPassword =>
@@ -161,6 +172,7 @@ function postRegister(req, res) {
   });
 }
 
+
 function guestLogic(req, res, secret){
   const guestCookie = sign({user: "guest"}, secret);
   res.writeHead(302, { Location: "/", 'Set-Cookie': `jwt=${guestCookie}` });
@@ -176,5 +188,6 @@ module.exports = {
   removeToken,
   postRegister,
   loginPageHandler,
-  guestLogic
+  guestLogic,
+  postLogin
 };
