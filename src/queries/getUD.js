@@ -6,8 +6,7 @@ const getUD = (username, password) => {
     dbConnection
       .query(`SELECT password FROM login WHERE username= '${username}';`)
       .then(dbPassword => {
-        console.log("row", dbPassword.rows[0].password);
-        resolve(dbPassword);
+        resolve(dbPassword.rows[0].password);
       })
       .catch(err => reject(err));
   });
