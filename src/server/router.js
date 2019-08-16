@@ -35,7 +35,7 @@ const router = (req, res) => {
   } else if (endpoint === "/register") {
     postRegister(req, res);
   } else if (endpoint === "/guestAccess") {
-    guestLogic(req, res);
+    guestLogic(req, res, secret);
   } else {
     res.writeHead(404, { "Content-Type": "text/html" });
     res.end("<h1>File not found </h1>");
