@@ -15,7 +15,7 @@ const getUD = require("../queries/getUD");
 function homeHandler(req, res, endpoint) {
   const filePath = path.join(__dirname, "../..", "public", "index.html");
   if (!req.headers.cookie) {
-    console.log(req.headers.cookie)
+    console.log(req.headers.cookie);
     res.writeHead(301, { Location: "/login-page" });
     res.end();
   }
@@ -94,7 +94,7 @@ function getDataHandler(req, res, endpoint) {
   });
 }
 
-function setToken(req, res, payload, secret) {
+function postLogin(req, res, payload, secret) {
   let allData = "";
   req.on("data", chunk => {
     allData += chunk;
@@ -103,9 +103,6 @@ function setToken(req, res, payload, secret) {
     const parsedData = qs.parse(allData);
     const username = parsedData.loginUserName;
     const password = parsedData.LoginPassWord;
-
-    const cookie = sign(payload, secret);
-    console.log(cookie);
     // insert getUD and then compare password function here
     getUD
       .getUD(username, password)
@@ -116,15 +113,20 @@ function setToken(req, res, payload, secret) {
         if (result == false) {
           console.log(result);
         } else {
-          res.writeHead(301, {
-            Location: "/",
-            "Set-Cookie": `jwt=${cookie}`
-          });
-          res.end();
+          setToken(req, res, payload, secret);
         }
       });
   });
 }
+
+const setToken = (req, res, payload, secret) => {
+  const cookie = sign(payload, secret);
+  res.writeHead(301, {
+    Location: "/",
+    "Set-Cookie": `jwt=${cookie}`
+  });
+  res.end();
+};
 
 function removeToken(req, res) {
   res.writeHead(301, {
@@ -161,8 +163,8 @@ function postRegister(req, res) {
   });
 }
 
-function guestLogic(req, res){
-  res.writeHead(302, { Location: "/", 'Set-Cookie': 'logged_in=false' });
+function guestLogic(req, res) {
+  res.writeHead(302, { Location: "/", "Set-Cookie": "logged_in=false" });
   res.end();
 }
 
@@ -175,5 +177,6 @@ module.exports = {
   removeToken,
   postRegister,
   loginPageHandler,
-  guestLogic
+  guestLogic,
+  postLogin
 };
