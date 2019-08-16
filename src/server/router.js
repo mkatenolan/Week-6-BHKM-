@@ -35,7 +35,7 @@ const router = (req, res) => {
   } else if (endpoint === "/logout") {
     removeToken(req, res);
   } else if (endpoint === "/register") {
-    postRegister(req, res);
+    postRegister(req, res, payload, secret);
   } else if (endpoint === "/guestAccess") {
     guestLogic(req, res);
   } else {

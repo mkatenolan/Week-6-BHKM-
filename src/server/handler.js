@@ -136,7 +136,7 @@ function removeToken(req, res) {
   res.end();
 }
 
-function postRegister(req, res) {
+function postRegister(req, res, payload, secret) {
   let allData = "";
   req.on("data", chunk => {
     allData += chunk;
@@ -145,6 +145,8 @@ function postRegister(req, res) {
     const parsedData = qs.parse(allData);
     const registeredPassword = parsedData.registerPassword;
     const username = parsedData.registerUserName;
+    // this should ideally only happen after passwords have been compared - to be added
+    setToken(req, res, payload, secret);
     passwordHandling
       .hashPassword(registeredPassword)
       .then(hashedPassword =>
