@@ -30,10 +30,11 @@
           name="registerUserName"
           type="text"
           required
+          maxlength="30"
           placeholder="Enter your username"
           oninvalid="this.setCustomValidity('Enter your username')"
           oninput="this.setCustomValidity('')"
-        />
+        /> <br>
         <label for="registerPassWord">Password</label>
         <input
           id="registerPassWord"
@@ -41,8 +42,9 @@
           name="registerPassword"
           type="password"
           required
+          maxlength="30"
           placeholder="Enter a password"
-        />
+        /> <br>
         <label for="confirmPassword">Confirm Password</label>
         <input
           id="confirmPassword"
@@ -50,8 +52,9 @@
           name="confirmPassword"
           type="password"
           required
+          maxlength="30"
           placeholder="Re-enter your password"
-        />
+        /> <br>
         <button type="submit" class="register-button">Register</button>
       </form>
 
@@ -69,6 +72,7 @@
           name="loginUserName"
           type="text"
           required
+          maxlength="30"
           placeholder="Enter your username"
           oninvalid="this.setCustomValidity('Enter your username')"
           oninput="this.setCustomValidity('')"
@@ -80,6 +84,7 @@
           name="LoginPassWord"
           type="password"
           required
+          maxlength="30"
           placeholder="Enter your password"
         />
         <button class="login-button" type="submit" name="submit">
@@ -87,7 +92,7 @@
         </button>
       </form>
     </section>
-    <section>
+    <section class="guest-section">
       <form
         class="guestForm"
         action="/guestAccess"

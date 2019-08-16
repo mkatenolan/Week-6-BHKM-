@@ -23,13 +23,9 @@
         alt="Angry bear picture"
       />
       <h1>Bugbears</h1>
-      <form
-      class="logout-button-form"
-      action="/logout"
-      method="POST"
-      >
-      <button class="logout-button" name="logout-button">Logout</button>
-    </form>
+      <form class="logout-button-form" action="/logout" method="POST">
+        <button class="logout-button" name="logout-button">Logout</button>
+      </form>
       <h1 class="section-header">Let off some steam!</h1>
       <p>
         Pissed off with the world? Politics getting you down? Let it out, you'll
@@ -72,6 +68,7 @@
           type="text"
           name="name"
           value=""
+          maxlength="30"
           required
         />
 
@@ -102,7 +99,7 @@
 
     <section class="bugbear-table-section">
       <h1 class="section-header">See what bugs others</h1>
-      <ul class="list"></ul>
+      <table class="list"></table>
     </section>
 
     <script src="/public/script.js" async defer></script>
