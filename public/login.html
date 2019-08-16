@@ -32,7 +32,7 @@
           placeholder="Enter your username"
           oninvalid="this.setCustomValidity('Enter your username')"
           oninput="this.setCustomValidity('')"
-        />
+        /> <br>
         <label for="registerPassWord">Password</label>
         <input
           id="registerPassWord"
@@ -41,7 +41,7 @@
           type="text"
           required
           placeholder="Enter a password"
-        />
+        /> <br>
         <label for="confirmPassword">Confirm Password</label>
         <input
           id="confirmPassword"
@@ -50,7 +50,7 @@
           type="text"
           required
           placeholder="Re-enter your password"
-        />
+        /> <br>
         <button type="submit" class="register-button">Register</button>
       </form>
 
@@ -83,7 +83,7 @@
         <button class="login-button" type="submit" name="submit">Sign In</button>
       </form>
     </section>
-    <section>
+    <section class="guest-section">
       <form
       class="guestForm"
       action="/guestAccess"
