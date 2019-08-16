@@ -38,7 +38,7 @@
           id="registerPassWord"
           class="register-password"
           name="registerPassword"
-          type="text"
+          type="password"
           required
           placeholder="Enter a password"
         />
@@ -47,7 +47,7 @@
           id="confirmPassword"
           class="confirm-password"
           name="confirmPassword"
-          type="text"
+          type="password"
           required
           placeholder="Re-enter your password"
         />
@@ -76,21 +76,25 @@
           id="loginPassWord"
           class="login-password"
           name="LoginPassWord"
-          type="text"
+          type="password"
           required
           placeholder="Enter your password"
         />
-        <button class="login-button" type="submit" name="submit">Sign In</button>
+        <button class="login-button" type="submit" name="submit">
+          Sign In
+        </button>
       </form>
     </section>
     <section>
       <form
-      class="guestForm"
-      action="/guestAccess"
-      method="POST"
-      aria-label="Continue as guest"
+        class="guestForm"
+        action="/guestAccess"
+        method="POST"
+        aria-label="Continue as guest"
       >
-        <button name="guestButton" class="guestButton">Continue as guest</button>
+        <button name="guestButton" class="guestButton">
+          Continue as guest
+        </button>
       </form>
     </section>
     <script src="/public/script.js" async defer></script>
