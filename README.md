@@ -1,9 +1,7 @@
-# Week-6&7-BHKM-
-Database project 
+# FAC-Week6 & 7 - Databases + Authentication 
 
-Andy, Christine, Emmanuel, Martha
 
-Team BHKM - Bugbear
+TEAM: Andy, Christine, Emmanuel, Martha
 
 ![](https://i.imgur.com/k5LL7Km.png)
 
